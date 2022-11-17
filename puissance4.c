@@ -62,11 +62,15 @@ int main()
     /* int ligne,colonne; */
     Grille g;
 
+    
+
     initGrille(g);
     
     afficher(g, PION_A, COLONNE_DEBUT);
 
     choisirColonne(g, PION_A, COLONNE_DEBUT);
+
+    
 
     /*
     while(( vainqueur == INCONNU ) && (!grillePleine(g)))
@@ -110,9 +114,19 @@ void afficher(Grille g, char pion, int colonne)
 {
     int i;
     int j;
+    int k;
+    int espace;
+    espace = colonne*2;
 
-    printf("Le numéro de la colonne est : %d\n", colonne);
+    printf("Le numéro de la colonne est : %d\n", colonne + 1);
     printf("C'est au tour du joueur 1 %c\n", pion);
+    
+    for(k=0; k<espace; k++)
+    {
+        printf(" ");
+    }
+    printf("%c\n", pion);
+
 
     printf("┌───┬───┬───┬───┬───┬───┬───┐\n");
 
@@ -187,13 +201,20 @@ int choisirColonne(Grille g, char pion, int colonne)
     {   
 
         printf("Choisissez une colonne : \n");
+        
+        initGrille(g);
+        afficher(g, pion , colonne);
+        
         scanf("%c%c", &saisie, &espace);
         afficher(g, pion, colonne);
+
+        
 
 
         if((saisie == GAUCHE) && (colonneChoisi <= 7))
         {
             colonneChoisi = colonneChoisi -1;
+            afficher(g, pion, colonneChoisi);
         }else if ((saisie == DROITE) && (colonneChoisi >= 0))
         {
             colonneChoisi = colonneChoisi +1;
