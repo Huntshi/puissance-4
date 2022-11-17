@@ -112,7 +112,7 @@ void afficher(Grille g, char pion, int colonne)
     int j;
 
     printf("Le numéro de la colonne est : %d\n", colonne);
-    printf("C'est au tour du joueur 1 %c", pion);
+    printf("C'est au tour du joueur 1 %c\n", pion);
 
     printf("┌───┬───┬───┬───┬───┬───┬───┐\n");
 
@@ -178,19 +178,18 @@ void jouer(Grille g, char pion, int *ligne, int *colonne)
 }
 
 int choisirColonne(Grille g, char pion, int colonne)
-{
-    afficher(g, pion, colonne);
+{ 
     char saisie;
     int colonneChoisi;
-
-        printf("Choisissez une colonne : \n");
-        scanf("%c", &saisie);
-
+    char espace;
+   
     do
     {   
 
         printf("Choisissez une colonne : \n");
-        scanf("%c", &saisie);
+        scanf("%c%c", &saisie, &espace);
+        afficher(g, pion, colonne);
+
 
         if((saisie == GAUCHE) && (colonneChoisi <= 7))
         {
