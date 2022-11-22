@@ -21,9 +21,9 @@ const char PION_B = 'O';
 const char VIDE = ' ';
 const char INCONNU = ' ';
 const int COLONNE_DEBUT = NBCOL/2;   // postionnement au milieu de la grille
-const char DROITE = 'd';                // touche de déplacement
-const char GAUCHE = 'q';                // touche de déplacement 
-const char ESPACE = ' ';
+const char DROITE = 'd';                // touche de déplacement à droite
+const char GAUCHE = 'q';                // touche de déplacement à gauche
+const char ESPACE = ' ';                //touche d'insertion du pion
 const int COMPTEURV = 4;
 
 typedef char Grille[NBLIG][NBCOL]; 
@@ -65,27 +65,22 @@ int main()
     char prenomA[15];
     char prenomB[15];
 
-    printf("Quel est le prénom du joueur A :\n");
+    printf("Quel est le prénom du joueur A :\n");       // les prénoms des joueurs sont demandés
     scanf("%s", prenomA);
 
     printf("Quel est le prénom du joueur B :\n");
     scanf("%s", prenomB);
 
-    printf("%s tu joueras avec les 'X'", prenomA);
-    printf("%s tu joueras avec les 'O'", prenomB);
-
-
     
-
-    initGrille(g);
+    initGrille(g);              //on initialise la grille de jeu
     
-    afficher(g, PION_A, COLONNE_DEBUT);
+    afficher(g, PION_A, COLONNE_DEBUT);         //puis on l'affiche avec le pion centré en haut de la grile
 
-    while(( vainqueur == INCONNU ) && (grillePleine(g) == false))
+    while(( vainqueur == INCONNU ) && (grillePleine(g) == false))       //le vainqueur n'est pas encore connu et la grille de jeu n'est pas remplie
     {
-        jouer(g, PION_A, &ligne, &colonne);
+        jouer(g, PION_A, &ligne, &colonne);             //appel de la procedure pour insérer un pion 
         afficher(g, PION_A, COLONNE_DEBUT);
-        if(estVainqueur(g, ligne, colonne))
+        if(estVainqueur(g, ligne, colonne))             //appel de la procédure qui vérifie le vainqueur
         {
             vainqueur = PION_A;
         }else if (grillePleine(g) == false)
@@ -99,12 +94,12 @@ int main()
         }
     }
 
-    finDePartie(vainqueur, prenomA, prenomB);
+    finDePartie(vainqueur, prenomA, prenomB);               // appel de la procedure qui affiche le résultat
 
     return EXIT_SUCCESS;
 }
 
-void initGrille(Grille g)
+void initGrille(Grille g)           //procedure qui initialise les cases de la grille à un espace
 {
     int i;
     int j;
@@ -118,17 +113,16 @@ void initGrille(Grille g)
     
 }
 
-void afficher(Grille g, char pion, int colonne)
+void afficher(Grille g, char pion, int colonne)                 // procedure qui affiche la grille avec le pion centré en haut de la grille
 {
     int i;
     int j;
     int k;
     system("clear");
 
-    //printf("Le numéro de la colonne est : %d\n", colonne + 1);
     printf("C'est au tour du joueur : '%c'\n", pion);
     
-    for(k=0; k<NBCOL; k++)
+    for(k=0; k<NBCOL; k++)                                  // boucle pour qui affiche les espaces 
     {
         if(k == colonne) {
             printf("  %c  ", pion);
@@ -161,7 +155,7 @@ void afficher(Grille g, char pion, int colonne)
     }
 }
 
-bool grillePleine(Grille g)
+bool grillePleine(Grille g)                             // fonction qui vérifie si la grille est remplie de pion 
 {
     int i;
     int j;
@@ -185,9 +179,8 @@ bool grillePleine(Grille g)
     
 }
 
-void jouer(Grille g, char pion, int *ligne, int *colonne)
+void jouer(Grille g, char pion, int *ligne, int *colonne)                       // procédure qui prend la colonne et la ligne pour insérer le pion
 {
-    //afficher(g, pion, *colonne);
     *colonne = COLONNE_DEBUT;
 
     do
@@ -199,7 +192,7 @@ void jouer(Grille g, char pion, int *ligne, int *colonne)
     g[*ligne][*colonne] = pion;
 }
 
-int choisirColonne(Grille g, char pion, int colonne)
+int choisirColonne(Grille g, char pion, int colonne)                    //procédure qui permet de choisir la colonne en se déplacant
 { 
     char saisie;
 
@@ -241,7 +234,7 @@ int choisirColonne(Grille g, char pion, int colonne)
     return colonne;
 }   
    
-int trouverLigne(Grille g, int colonne)
+int trouverLigne(Grille g, int colonne)                             // procédure qui vérifie si les cases sont déja prises ou pas 
 {
     int i;
     for(i=NBLIG; i>=0; i--)
@@ -254,7 +247,7 @@ int trouverLigne(Grille g, int colonne)
     return -1;
 }
 
-bool estVainqueur(Grille g, int ligne, int colonne)
+bool estVainqueur(Grille g, int ligne, int colonne)                         // fonction qui retourne le vainqueur en fonction des alignements des pions
 {
     int i;
     int j;
@@ -388,7 +381,7 @@ bool estVainqueur(Grille g, int ligne, int colonne)
     return victoire;
 }
 
-void finDePartie(char pion, char prenomA[15], char prenomB[15])
+void finDePartie(char pion, char prenomA[15], char prenomB[15])                         //procedure qui affiche le résultat de la partie 
 {
 
     if(pion == INCONNU)
