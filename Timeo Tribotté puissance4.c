@@ -76,6 +76,7 @@ const int COMPTEURV = 4;
 /**
 *   /def COMPTEURV
 *   /brief constante qui represente un compteur afin de vérifier si 4 pions sont alignés dans la fonction estVainqueur
+*   /see cette constante est utilisé uniquement dans la fonction estVainqueur
 */
 
 typedef char Grille[NBLIG][NBCOL]; 
@@ -151,8 +152,8 @@ int main()
     return EXIT_SUCCESS;
 }
 
-void initGrille(Grille g)           //procedure qui initialise les cases de la grille à un espace
-{
+
+void initGrille(Grille g)          
     int i;
     int j;
     for(i=0; i<NBLIG; i++)
@@ -164,8 +165,13 @@ void initGrille(Grille g)           //procedure qui initialise les cases de la g
     }
     
 }
+/**
+*   /fn void initGrille(Grille g) 
+*   /brief Procedure qui initialise les cases de la grille à un espace.
+*   /param  grille de jeu g.
+*/
 
-void afficher(Grille g, char pion, int colonne)                 // procedure qui affiche la grille avec le pion centré en haut de la grille
+void afficher(Grille g, char pion, int colonne)                 
 {
     int i;
     int j;
@@ -206,8 +212,13 @@ void afficher(Grille g, char pion, int colonne)                 // procedure qui
        
     }
 }
+/**
+*   /fn void afficher(Grille g, char pion, int colonne) 
+*   /brief Procedure qui affiche la grille avec le pion centré en haut de la grille.
+*   /param  grille de jeu g, un pion et la colonne.
+*/
 
-bool grillePleine(Grille g)                             // fonction qui vérifie si la grille est remplie de pion 
+bool grillePleine(Grille g)                             
 {
     int i;
     int j;
@@ -230,6 +241,12 @@ bool grillePleine(Grille g)                             // fonction qui vérifie
     return estPleine;
     
 }
+/**
+*   /fn bool grillePleine(Grille g) 
+*   /brief Fonction qui vérifie si la grille est remplie de pion.
+*   /param  grille de jeu g.
+*   /return true si la grille est pleine et false sinon. 
+*/
 
 void jouer(Grille g, char pion, int *ligne, int *colonne)                       // procédure qui prend la colonne et la ligne pour insérer le pion
 {
