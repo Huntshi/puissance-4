@@ -248,7 +248,7 @@ bool grillePleine(Grille g)
 *   /return true si la grille est pleine et false sinon. 
 */
 
-void jouer(Grille g, char pion, int *ligne, int *colonne)                       // procédure qui prend la colonne et la ligne pour insérer le pion
+void jouer(Grille g, char pion, int *ligne, int *colonne)                       
 {
     *colonne = COLONNE_DEBUT;
 
@@ -260,8 +260,13 @@ void jouer(Grille g, char pion, int *ligne, int *colonne)                       
 
     g[*ligne][*colonne] = pion;
 }
+/**
+*   /fn void jouer(Grille g, char pion, int *ligne, int *colonne)
+*   /brief Procédure qui prend en paramètre la colonne et la ligne pour insérer le pion.
+*   /param  grille de jeu g, un pion, la ligne disponible et la colonne choisi.
+*/
 
-int choisirColonne(Grille g, char pion, int colonne)                    //procédure qui permet de choisir la colonne en se déplacant
+int choisirColonne(Grille g, char pion, int colonne)                    
 { 
     char saisie;
 
@@ -301,10 +306,15 @@ int choisirColonne(Grille g, char pion, int colonne)                    //procé
         //while (getchar () != '\n');
     } while (saisie != ESPACE);
     return colonne;
-}   
+}
+/**
+*   /fn int choisirColonne(Grille g, char pion, int colonne) 
+*   /brief Fonction qui permet de choisir la colonne ou l'on souhaite insérer le pion en se déplacant.
+*   /param  grille de jeu g, un pion, et la colonne;
+*   /return la colonne choisie.
+*/
    
-int trouverLigne(Grille g, int colonne)                             // procédure qui vérifie si les cases sont déja prises ou pas 
-{
+int trouverLigne(Grille g, int colonne)                             
     int i;
     for(i=NBLIG; i>=0; i--)
     {
@@ -315,8 +325,14 @@ int trouverLigne(Grille g, int colonne)                             // procédur
     }
     return -1;
 }
+/**                           
+*   /fn int trouverLigne(Grille g, int colonne) 
+*   /brief Procédure qui vérifie si les cases de la colonne choisie sont déja prises ou pas, ligne par ligne.
+*   /param  grille de jeu g, et la colonne choisie.
+*   /return -1 si la ligne est pleine ou le numero de la ligne sinon.
+*/
 
-bool estVainqueur(Grille g, int ligne, int colonne)                         // fonction qui retourne le vainqueur en fonction des alignements des pions
+bool estVainqueur(Grille g, int ligne, int colonne)                        
 {
     int i;
     int j;
@@ -449,8 +465,14 @@ bool estVainqueur(Grille g, int ligne, int colonne)                         // f
 
     return victoire;
 }
+/**                           
+*   /fn bool estVainqueur(Grille g, int ligne, int colonne) 
+*   /brief Fonction qui retourne le vainqueur en fonction des alignements des pions.
+*   /param  grille de jeu g, les ligne et les colonnes.
+*   /return true si il y a un alignement de 4 pions et false sinon.
+*/
 
-void finDePartie(char pion, char prenomA[15], char prenomB[15])                         //procedure qui affiche le résultat de la partie 
+void finDePartie(char pion, char prenomA[15], char prenomB[15])                         
 {
 
     if(pion == INCONNU)
@@ -467,5 +489,10 @@ void finDePartie(char pion, char prenomA[15], char prenomB[15])                 
         printf("Erreur de saisie \n");
     }
     
-} 
+}
+/**
+*   /fn void finDePartie(char pion, char prenomA[15], char prenomB[15]) 
+*   /brief Procedure qui affiche le résultat de la partie.
+*   /param  grille de jeu g, le prenom du joueur A et le prenom du joueur B.
+*/
 
