@@ -11,20 +11,72 @@
 #include <stdbool.h>
 #include <string.h>
 
+#define NBLIG 6
+/**
+*   /def NBLIG
+*   /brief constante du nombre de ligne de la grille de jeu
+*/
 
-#define NBLIG 6   // constante des lignes de la grille
-#define NBCOL 7  // constante des colonnes de la grille
+#define NBCOL 7  
+/**
+*   /def NBCOL
+*   /brief constante du nombre de colonne de la grille de jeu
+*/
 
 
 const char PION_A = 'X';
+/**
+*   /def PION_A
+*   /brief constante qui represente le caractère 'X', utilisé comme pion
+*/
+
 const char PION_B = 'O';
+/**
+*   /def PION_B
+*   /brief constante qui represente le caractère 'O', utilisé comme pion
+*/
+
 const char VIDE = ' ';
+/**
+*   /def VIDE
+*   /brief constante qui represente le caractère espace qui sera ajouté à chaque case de la grille de jeu
+*/
+
 const char INCONNU = ' ';
-const int COLONNE_DEBUT = NBCOL/2;   // postionnement au milieu de la grille
-const char DROITE = 'd';                // touche de déplacement à droite
-const char GAUCHE = 'q';                // touche de déplacement à gauche
-const char ESPACE = ' ';                //touche d'insertion du pion
+/**
+*   /def INCONNU
+*   /brief constante qui assigne un vainqueur qui n'est pas un dès deux joueurs
+*/
+
+const int COLONNE_DEBUT = NBCOL/2;
+/**
+*   /def COLONNE_DEBUT
+*   /brief constante qui represente l'emplacement du pion au debut de chaque tour, ici sur la colonne 3 au milieu
+*/
+
+const char DROITE = 'd';
+/**
+*   /def DROITE
+*   /brief constante qui represente la touche de déplacement pour aller à droite
+*/
+
+const char GAUCHE = 'q';
+/**
+*   /def GAUCHE
+*   /brief constante qui represente la touche de déplacement pour aller à gauche
+*/
+
+const char ESPACE = ' ';
+/**
+*   /def ESPACE
+*   /brief constante qui represente la touche d'insertion du pion
+*/
+
 const int COMPTEURV = 4;
+/**
+*   /def COMPTEURV
+*   /brief constante qui represente un compteur afin de vérifier si 4 pions sont alignés dans la fonction estVainqueur
+*/
 
 typedef char Grille[NBLIG][NBCOL]; 
 /**
@@ -32,7 +84,7 @@ typedef char Grille[NBLIG][NBCOL];
 * \brief Type tableau de caractère NBLIG-1 et NBCOL-1
 *
 * Le type char Grille permet de définir la grille de jeu 
-* et de pouvoir la réutilisé dans laa suite du programme 
+* et de pouvoir la réutilisé dans la suite du programme 
 */ 
 
 void initGrille(Grille g);
