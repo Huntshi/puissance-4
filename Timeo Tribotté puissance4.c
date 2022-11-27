@@ -153,7 +153,8 @@ int main()
 }
 
 
-void initGrille(Grille g)          
+void initGrille(Grille g)
+{
     int i;
     int j;
     for(i=0; i<NBLIG; i++)
@@ -314,7 +315,8 @@ int choisirColonne(Grille g, char pion, int colonne)
 *   /return la colonne choisie.
 */
    
-int trouverLigne(Grille g, int colonne)                             
+int trouverLigne(Grille g, int colonne)
+{
     int i;
     for(i=NBLIG; i>=0; i--)
     {
